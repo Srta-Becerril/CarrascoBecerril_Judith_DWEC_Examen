@@ -1,17 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h1>Suma de Números Primos</h1>
+        <button onclick="calcularSumaPrimos()">Calcular Suma de Números Primos</button>
+        <div id="resultados"></div>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-
-<body>
-    <h1>Suma de Números Primos</h1>
-    <button onclick="calcularSumaPrimos()">Calcular Suma de Números Primos</button>
-    <div id="resultados"></div>
-
-  
-</body>
-
+        <script>
+            // Declaración de variables.
+            let suma = 0; // Variable para almacenar la suma de números primos.
+            let n = 0; // Contador de números totales ingresados por el usuario.
+        
+            // Condicional para pedir 5 números primos.
+            while (n < 5) {
+                let num = parseInt(prompt(`Ingrese un número ${n + 1}: `)); // Solicitar número al usuario.
+        
+                // Comprobación del número introducido.
+                if (!isNaN(num) && num > 1) { // Comprueba si el número es válido y mayor que 1.
+                    if (esPrimo(num)) { // Comprueba el número ingresado es primo (función).
+                        suma += num; // Suma el número a la variable 'suma'.
+                    }
+                    n++; // Incrementa el contador de números ingresados.
+                } else {
+                    alert("Introduzca un número válido mayor que 1."); // Mensaje por pantalla emergente de error.
+                }
+            }
+        
+            alert(`La suma de los números primos es: ${suma}`); // Muestra la suma de los números primos.
+        
+            // Función de comprobación de números primos.
+            function esPrimo(num) {
+                for (let i = 2; i <= Math.sqrt(num); i++) { // Bucle que verifica los números primos.
+                    if (num % i === 0) { 
+                        return false; // Si se encuentra un divisor, el número no es primo.
+                    }
+                }
+                return num > 1; // Si no se encontraron divisores, el número es primo.
+            }
+        </script>
+        
+    </body>
 </html>
